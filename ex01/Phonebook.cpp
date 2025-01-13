@@ -55,5 +55,10 @@ void	Phonebook::search(void) {
 		std::cout << "Enter index between 1 and 8:" << std::endl;
 		std::cin >> index;
 	}
-	std::cout << this->contacts[index - 1].first_name << std::endl;
+	if (this->contacts[index - 1].phone_number == -1)
+		return ;
+	std::cout << std::setw(10) << (index - 1) << "|";
+	std::cout << std::setw(10) << this->contacts[index - 1].first_name << "|";
+	std::cout << std::setw(10) << this->contacts[index - 1].last_name << "|";
+	std::cout << std::setw(10) << this->contacts[index - 1].nickname << std::endl;
 }

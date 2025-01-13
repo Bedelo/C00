@@ -3,6 +3,8 @@
 
 #include "Contact.class.hpp"
 #include <iostream>
+#include <string>
+#include <iomanip> 
 
 class Phonebook {
 
