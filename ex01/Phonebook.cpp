@@ -20,7 +20,7 @@ Contact	Phonebook::_add_processing(void){
 	int pn = -1; 
 
 	while (fn.empty()){
-		std::cout << "Enter firstname:" << std ::endl;
+		std::cout << "Enter firstname ++:" << std ::endl;
 		std::getline (std::cin, fn);
 	}
 	while (ln.empty()){
@@ -38,6 +38,12 @@ Contact	Phonebook::_add_processing(void){
 	while (pn == -1){
 		std::cout << "Enter phone number:" << std ::endl;
 		std::cin >> pn;
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin.ignore();
+			pn = -1;
+		}
 	}
 	Contact contact(fn, ln, nm, ds, pn);
 	return contact;
@@ -49,5 +55,5 @@ void	Phonebook::search(void) {
 		std::cout << "Enter index between 1 and 8:" << std::endl;
 		std::cin >> index;
 	}
-	std::cout << this->contacts[index -1].first_name << std::endl;
+	std::cout << this->contacts[index - 1].first_name << std::endl;
 }
