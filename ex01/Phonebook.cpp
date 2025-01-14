@@ -77,7 +77,6 @@ void	Phonebook::search(void) {
 	std::cout << std::setw(10) << std::right << "first_name" << "|";
 	std::cout << std::setw(10) << std::right << "last_name" << "|";
 	std::cout << std::setw(10) << std::right << "nickname" << "|" << std::endl;
-	
 	while (this->contacts[index - 1].phone_number != "")
 	{
 		std::cout << std::setw(10) << std::right << (index) << "|";
@@ -94,6 +93,10 @@ void	Phonebook::search(void) {
 		tmp[0] = index_[0];
 		tmp[1] = 0;
 		index = atoi(tmp);
+	}
+	if (this->contacts[index - 1].first_name == ""){
+		std::cout << "Invalid index!!" << std::endl;
+		return ;
 	}
 	std::cout << std::setw(10) << std::right << "first name :" << (this->contacts[index - 1].first_name)  << std::endl;
 	std::cout << std::setw(10) << std::right << "last name :" <<  (this->contacts[index - 1].last_name)  << std::endl;
