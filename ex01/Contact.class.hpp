@@ -12,10 +12,10 @@ public:
 	std::string	last_name;
 	std::string	nickname; 
 	std::string	darkest_secret; 
-	int			phone_number;
+	std::string	phone_number;
 
 	Contact(void);
-	Contact( std::string fn, std::string ln, std::string nm, std::string ds, int pn);
+	Contact( std::string fn, std::string ln, std::string nm, std::string ds, std::string pn);
 	~Contact(void);
 
 

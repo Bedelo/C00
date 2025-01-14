@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 #include <iomanip> 
+#include <cctype>
+#include <cstdlib> 
 
 class Phonebook {
 
@@ -21,6 +23,8 @@ public:
 
 private:
 	Contact _add_processing(void);
+	std::string _to_display(std::string value);
+	int	_full_digit(std::string value);
 };
 
 #endif
