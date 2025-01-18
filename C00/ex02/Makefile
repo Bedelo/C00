@@ -4,7 +4,7 @@ CFLAGS	= -Wall -Werror -Wextra -std=c++98
 RM		= rm -f
 
 SRCS	= ./Account.cpp\
-			./test.cpp
+			./tests.cpp
 OBJS	= $(SRCS:.cpp=.o)
 
 all	: $(NAME)

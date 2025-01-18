@@ -6,38 +6,61 @@
 /*   By: bsunda <bsunda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 13:18:23 by bsunda            #+#    #+#             */
-/*   Updated: 2025/01/18 18:07:27 by bsunda           ###   ########.fr       */
+/*   Updated: 2025/01/18 18:29:35 by bsunda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
 #include <iostream>
-#include "Account.hpp"
 #include <iostream>
 #include <ctime>
 #include <iomanip>
 #include <sstream>
+#include "Account.hpp"
 
 int Account::_nbAccounts = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalAmount = 0;
 int Account::_totalNbWithdrawals = 0;
 
+void	Account::_displayTimestamp( void ){
+	std::time_t now = std::time(0);
+	std::tm *ltm = std::localtime(&now);
+
+	std::ostringstream oss;
+	oss << "[" 
+		<< (1900 + ltm->tm_year) // Année
+		<< std::setw(2) << std::setfill('0') << (1 + ltm->tm_mon) // Mois
+		<< std::setw(2) << std::setfill('0') << ltm->tm_mday // Jour
+		<< "_"
+		<< std::setw(2) << std::setfill('0') << ltm->tm_hour // Heure
+		<< std::setw(2) << std::setfill('0') << ltm->tm_min // Minutes
+		<< std::setw(2) << std::setfill('0') << ltm->tm_sec // Secondes
+		<< "]";
+
+	std::cout << oss.str();
+}
+
+Account::Account( void ){
+	return ;
+}
+
 Account::Account( int initial_deposit ){
-	Account::_displayTimestamp();
-	std::cout << " index:" << this->_accountIndex << ";amount:" << this->_amount << ";created" << std::endl;
+	_displayTimestamp();
 	this->_accountIndex = _nbAccounts;
 	_nbAccounts++;
 	this->_amount = initial_deposit;
 	this->_nbDeposits = 0;
 	this->_nbWithdrawals = 0;
 	_totalAmount += this->_amount;
+	std::cout << " index:" << this->_accountIndex << ";amount:" << this->_amount << ";created" << std::endl;
 	return ;
 }
 
 Account::~Account( void ){
-	Account::_displayTimestamp();
+	_displayTimestamp();
 	std::cout << " index:" << this->_accountIndex << ";amount:" << this->_amount << "; closed" << std::endl;
+	return ;
 }
 
 int	Account::getNbAccounts( void ){
@@ -56,25 +79,8 @@ int	Account::getNbWithdrawals( void ){
 	return _totalNbWithdrawals;
 }
 
-static void	_displayTimestamp( void ){
-    std::time_t now = std::time(0);
-    std::tm *ltm = std::localtime(&now);
-
-    std::ostringstream oss;
-    oss << "[" 
-        << (1900 + ltm->tm_year) // Année
-        << std::setw(2) << std::setfill('0') << (1 + ltm->tm_mon) // Mois
-        << std::setw(2) << std::setfill('0') << ltm->tm_mday // Jour
-        << "_"
-        << std::setw(2) << std::setfill('0') << ltm->tm_hour // Heure
-        << std::setw(2) << std::setfill('0') << ltm->tm_min // Minutes
-        << std::setw(2) << std::setfill('0') << ltm->tm_sec // Secondes
-        << "]";
-
-    std::cout << oss.str();
-}
-
 void	Account::makeDeposit( int deposit ){
+	Account::_displayTimestamp();
 	std::cout << " index:" << this->_accountIndex << ";p_amount:" << this->_amount;
 	this->_amount += deposit;
 	this->_nbDeposits += 1;
