@@ -6,7 +6,7 @@
 /*   By: bsunda <bsunda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 13:18:23 by bsunda            #+#    #+#             */
-/*   Updated: 2025/01/18 18:29:35 by bsunda           ###   ########.fr       */
+/*   Updated: 2025/01/20 11:22:06 by bsunda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	Account::makeDeposit( int deposit ){
 	this->_nbDeposits += 1;
 	_totalNbDeposits += 1;
 	_totalAmount += deposit; 
-	std::cout << ";deposit:" << deposit << ";amount:" << this->_amount << ";nb_deposits:" << Account::getNbDeposits() << std::endl;
+	std::cout << ";deposit:" << deposit << ";amount:" << this->_amount << ";nb_deposits:" << this->_nbDeposits << std::endl;
 }
 
 bool	Account::makeWithdrawal( int withdrawal ){
@@ -100,9 +100,9 @@ bool	Account::makeWithdrawal( int withdrawal ){
 	{
 		this->_amount -= withdrawal;
 		this->_nbWithdrawals += 1;
-		_totalNbDeposits += 1;
+		_totalNbWithdrawals += 1;
 		_totalAmount -= withdrawal;
-		std::cout << ";withdrawal:" << withdrawal << ";amount:" << this->_amount << ";nb_withdrawals:" << Account::getNbWithdrawals() << std::endl;
+		std::cout << ";withdrawal:" << withdrawal << ";amount:" << this->_amount << ";nb_withdrawals:" << this->_nbWithdrawals << std::endl;
 		return true;
 	}
 }
