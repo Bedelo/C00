@@ -1,6 +1,6 @@
 NAME	= catalog
 CC		= c++
-CFLAGS	= -Wall -Werror -Wextra -std=c++98
+CFLAGS	= -Wall -Werror -Wextra -std=c++98 -g3
 RM		= rm -f
 
 SRCS	= ./Phonebook.cpp \

@@ -11,7 +11,7 @@ Phonebook::~Phonebook(void){
 }
 
 void	Phonebook::add(void){
-	this->contacts[ this->add_cursor % 8] = _add_processing();
+	this->contacts[ this->add_cursor % 7] = _add_processing();
 	this->add_cursor++;
 }
 
@@ -69,7 +69,7 @@ std::string Phonebook::_to_display(std::string value){
 }
 
 void	Phonebook::search(void) {
-	int	index = 1;
+	int	index = 0;
 	std::string index_ ;
 	char tmp[2];
 	
@@ -77,16 +77,16 @@ void	Phonebook::search(void) {
 	std::cout << std::setw(10) << std::right << "first_name" << "|";
 	std::cout << std::setw(10) << std::right << "last_name" << "|";
 	std::cout << std::setw(10) << std::right << "nickname" << "|" << std::endl;
-	while (this->contacts[index - 1].phone_number != "")
+	while (this->contacts[index].phone_number != "")
 	{
-		std::cout << std::setw(10) << std::right << (index) << "|";
-		std::cout << std::setw(10) << std::right << _to_display(this->contacts[index - 1].first_name) << "|";
-		std::cout << std::setw(10) << std::right << _to_display(this->contacts[index - 1].last_name) << "|";
-		std::cout << std::setw(10) << std::right << _to_display(this->contacts[index - 1].nickname) << "|" << std::endl;
+		std::cout << std::setw(10) << std::right << (index + 1) << "|";
+		std::cout << std::setw(10) << std::right << _to_display(this->contacts[index].first_name) << "|";
+		std::cout << std::setw(10) << std::right << _to_display(this->contacts[index].last_name) << "|";
+		std::cout << std::setw(10) << std::right << _to_display(this->contacts[index].nickname) << "|" << std::endl;
 		index++;
 	}
 	index = -1;
-	while (index < 1 || index > 8){
+	while (index  < 1 || index  > 8){
 		std::cout << "Enter index between 1 and 8:" << std::endl;
 		if (!std::getline(std::cin, index_))
 			exit(1);
